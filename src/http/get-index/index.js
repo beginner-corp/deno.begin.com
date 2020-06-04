@@ -57,6 +57,8 @@ export async function handler(req) {
   }
   */
 
+  console.log(req.headers)
+
   let isHTML = (req.headers.accept && req.headers.accept.startsWith("text/html")) ||
     (req.headers.Accept && req.headers.Accept.startsWith("text/html"));
   if (isHTML) {
