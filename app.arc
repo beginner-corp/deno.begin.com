@@ -3,6 +3,7 @@ deno-mods
 
 @http
 get /
+get /headers
 
 @begin
 lint "deno fmt && deno --version"
