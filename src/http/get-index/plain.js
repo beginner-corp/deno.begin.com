@@ -12,14 +12,16 @@ export async function plain(path) {
     let json = await files.json();
     //if (json.content) return atob(json.content);
     //else return json
-    return { 
+    return {
       statusCode: 200,
       headers: {
         "cache-control":
           "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0",
-        "content-type": `${ json.content? 'text/plain' : 'application/json' }; charset=utf8`,
+        "content-type": `${
+          json.content ? "text/plain" : "application/json"
+        }; charset=utf8`,
       },
-      body: json.content? atob(json.content) : json
+      body: json.content ? atob(json.content) : json,
     };
     /*
     } else {

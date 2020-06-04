@@ -1,6 +1,5 @@
-
-export async function handler (req) {
+export async function handler(req) {
   return {
-    body: JSON.stringify(req)
-  }
+    body: JSON.stringify(req),
+  };
 }
