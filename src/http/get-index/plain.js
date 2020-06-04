@@ -27,8 +27,9 @@ export async function plain(path) {
     let html = `<ul><li><a href=/>home</a></li>`;
     html +=
       json.map((v) =>
-        `<li><a href=${path.split("@")[0]}@${v.path}>${v.path}</a></li>`
-      ).join("") + "</ul>";
+        `<li><a href=${path.split("@")}/${v.path}>${v.path}</a></li>`
+      );
+    return html.join("") + "</ul>"
   }
 
   if (!ledger[path]) {
