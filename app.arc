@@ -5,7 +5,7 @@ deno-mods
 get /
 
 @begin
-lint "deno fmt"
+lint "deno fmt && deno --version"
 test "deno test -A --unstable test"
 
 @aws
