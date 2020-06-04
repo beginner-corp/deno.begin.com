@@ -61,7 +61,9 @@ export async function handler(req) {
     (req.headers.Accept && req.headers.Accept.startsWith("text/html"));
   if (isHTML) {
     let body = "failed";
+    console.log('rendering html')
     try {
+      console.log('before branch body', req)
       body = await branch(req.path);
     } catch (e) {
       console.log("meaningful error maybe", e);
@@ -77,13 +79,5 @@ export async function handler(req) {
     };
   }
 
-  return {
-    statusCode: 200,
-    headers: {
-      "cache-control":
-        "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0",
-      "content-type": "text/plain; charset=utf8",
-    },
-    body: await plain(req.path),
-  };
+  return plain(req.path)
 }
