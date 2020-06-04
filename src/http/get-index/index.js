@@ -11,12 +11,11 @@ import { getTags } from "./get_tags.js";
 export async function handler(req) {
   //
   // render home page
-  //if (req.path === "/") {
+  if (req.path === "/") {
     return home();
- // }
+  }
 
   // not home! maybe redirect; maybe render html
-  /*
   let parts = req.path.split("/").filter(Boolean); // ['modulename@v1.0.8', 'mod.ts']
   let first = parts[0]; // modulename@v1.0.8
   let redirect = (b) => ({
@@ -24,6 +23,7 @@ export async function handler(req) {
     headers: { location: b.join("/") },
   });
 
+  /*
   // redirect to @master if no branch or tag is specified
   if (first.includes("@") === false) {
     parts[0] = `/${parts[0]}@master`;
