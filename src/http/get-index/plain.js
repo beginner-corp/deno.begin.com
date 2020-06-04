@@ -27,7 +27,7 @@ export async function plain(path) {
     let html = `<ul><li><a href=/>home</a></li>`;
     html +=
       json.map((v) =>
-        `<li><a href=${path.split("@")}/${v.path}>${v.path}</a></li>`
+        `<li><a href=${path}/${v.path}>${v.path}</a></li>`
       ).join("");
     return html + "</ul>"
   }
