@@ -1,8 +1,7 @@
 import { home } from "./home.js";
-import { getTags } from "./get_tags.js";
-/*import { branch } from "./branch.js";
+//import { getTags } from "./get_tags.js";
+import { branch } from "./branch.js";
 import { plain } from "./plain.js";
-*/
 
 // /modulename            -> modulename@master
 // /modulename@latest     -> modulename@1.1.11
@@ -29,6 +28,7 @@ export async function handler(req) {
     return redirect(parts);
   }
 
+  /*
   // render versions for the given module
   if (first.includes("@") && first.split("@")[1] === "versions") {
     let tags = await getTags(first);
@@ -46,8 +46,6 @@ export async function handler(req) {
       body: html,
     };
   }
-
-  /*
   // redirect @latest to most recent semver tag
   if (first.includes("@") && first.split("@")[1] === "latest") {
     // get all tags
@@ -57,6 +55,7 @@ export async function handler(req) {
     parts[0] = `/${parts[0].replace("latest", last)}`;
     return redirect(parts);
   }
+  */
 
   let isHTML = req.headers.accept.startsWith("text/html") ||
     req.headers.Accept.startsWith("text/html");
@@ -80,5 +79,5 @@ export async function handler(req) {
       "content-type": "text/plain; charset=utf8",
     },
     body: await plain(req.path),
-  };*/
+  };
 }

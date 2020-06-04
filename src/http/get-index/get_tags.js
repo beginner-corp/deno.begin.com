@@ -1,4 +1,4 @@
-import { compare } from "https://raw.githubusercontent.com/justjavac/deno-semver/master/mod.ts";
+import { compare } from "https://deno.land/x/semver/mod.ts";
 
 /** get tags for given module */
 export async function getTags(first) {
