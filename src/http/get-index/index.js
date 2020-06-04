@@ -60,6 +60,13 @@ export async function handler(req) {
   let isHTML = req.headers.accept.startsWith("text/html") ||
     req.headers.Accept.startsWith("text/html");
   if (isHTML) {
+    let body = 'failed'
+    try {
+      body = await branch(req.path),
+    }
+    catch(e) {
+      console.log('meaningful error maybe', e)
+    }
     return {
       statusCode: 200,
       headers: {
