@@ -1,4 +1,4 @@
-import { compare } from "https://deno.land/x/semver/mod.ts";
+import { compare } from './semver.js' //"https://deno.land/x/semver/mod.ts";
 
 /** get tags for given module */
 export async function getTags(first) {
