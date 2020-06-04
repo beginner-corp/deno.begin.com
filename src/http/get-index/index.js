@@ -3,11 +3,16 @@ import { home } from "./home.js";
 import { branch } from "./branch.js";
 import { plain } from "./plain.js";
 
+export async function handler (req) {
+  return {
+    body: JSON.stringify(req)
+  }
+}
 // /modulename            -> modulename@master
 // /modulename@latest     -> modulename@1.1.11
 // /modulename@branchname -> modulename@branchname
 // /modulename@v1.0.0
-export async function handler(req) {
+export async function handlers(req) {
   //
   // render home page
   if (req.path === "/") {
