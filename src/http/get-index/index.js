@@ -1,7 +1,7 @@
 import { home } from "./home.js";
+import { getTags } from "./get_tags.js";
 /*import { branch } from "./branch.js";
 import { plain } from "./plain.js";
-import { getTags } from "./get_tags.js";
 */
 
 // /modulename            -> modulename@master
@@ -23,7 +23,6 @@ export async function handler(req) {
     headers: { location: b.join("/") },
   });
 
-  /*
   // redirect to @master if no branch or tag is specified
   if (first.includes("@") === false) {
     parts[0] = `/${parts[0]}@master`;
@@ -48,6 +47,7 @@ export async function handler(req) {
     };
   }
 
+  /*
   // redirect @latest to most recent semver tag
   if (first.includes("@") && first.split("@")[1] === "latest") {
     // get all tags
