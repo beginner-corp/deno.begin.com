@@ -10,8 +10,8 @@ export async function plain(path) {
       `${base}/${repo}/contents/${bits.join("/")}?ref=${version}`,
     );
     let json = await files.json();
-    if (json.content) return atob(json.content)
-/*
+    if (json.content) return atob(json.content);
+    /*
     } else {
       //console.log('branch called with path', path, json)
       let files = json.map((f) => ({

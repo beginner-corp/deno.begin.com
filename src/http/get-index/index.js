@@ -7,7 +7,7 @@ import { getTags } from "./get_tags.js";
 // /modulename@latest     -> modulename@1.1.11
 // /modulename@branchname -> modulename@branchname
 // /modulename@v1.0.0
-export async function handler(req: { headers: {accept: string}, path: string }) {
+export async function handler(req) {
   //
   // render home page
   if (req.path === "/") {
@@ -17,7 +17,7 @@ export async function handler(req: { headers: {accept: string}, path: string }) 
   // not home! maybe redirect; maybe render html
   let parts = req.path.split("/").filter(Boolean); // ['modulename@v1.0.8', 'mod.ts']
   let first = parts[0]; // modulename@v1.0.8
-  let redirect = (b: string[]) => ({
+  let redirect = (b) => ({
     statusCode: 302,
     headers: { location: b.join("/") },
   });
@@ -31,10 +31,10 @@ export async function handler(req: { headers: {accept: string}, path: string }) 
   // render versions for the given module
   if (first.includes("@") && first.split("@")[1] === "versions") {
     let tags = await getTags(first);
-    let html = `<ul><li><a href=/>home</a></li>`
-    html += tags.map((v: string) =>
+    let html = `<ul><li><a href=/>home</a></li>`;
+    html += tags.map((v) =>
       `<li><a href=${first.split("@")[0]}@${v}>${v}</a></li>`
-    ).join("") + '</ul>';
+    ).join("") + "</ul>";
     return {
       statusCode: 200,
       headers: {
@@ -56,7 +56,8 @@ export async function handler(req: { headers: {accept: string}, path: string }) 
     return redirect(parts);
   }
 
-  let isHTML = req.headers.accept.startsWith('text/html') //|| req.headers['Accept'].startsWith('text/html')
+  let isHTML = req.headers.accept.startsWith("text/html") ||
+    req.headers.Accept.startsWith("text/html");
   if (isHTML) {
     return {
       statusCode: 200,
