@@ -1,7 +1,8 @@
 import { home } from "./home.js";
-import { branch } from "./branch.js";
+/*import { branch } from "./branch.js";
 import { plain } from "./plain.js";
 import { getTags } from "./get_tags.js";
+*/
 
 // /modulename            -> modulename@master
 // /modulename@latest     -> modulename@1.1.11
@@ -15,6 +16,7 @@ export async function handler(req) {
  // }
 
   // not home! maybe redirect; maybe render html
+  /*
   let parts = req.path.split("/").filter(Boolean); // ['modulename@v1.0.8', 'mod.ts']
   let first = parts[0]; // modulename@v1.0.8
   let redirect = (b) => ({
@@ -78,5 +80,5 @@ export async function handler(req) {
       "content-type": "text/plain; charset=utf8",
     },
     body: await plain(req.path),
-  };
+  };*/
 }
