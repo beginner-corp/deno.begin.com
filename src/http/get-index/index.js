@@ -1,5 +1,5 @@
 import { home } from "./home.js";
-import { getTags } from "./get_tags.js";
+//import { getTags } from "./get_tags.js";
 import { branch } from "./branch.js";
 import { plain } from "./plain.js";
 
@@ -28,6 +28,7 @@ export async function handler(req) {
     return redirect(parts);
   }
 
+  /*
   // render versions for the given module
   if (first.includes("@") && first.split("@")[1] === "versions") {
     let tags = await getTags(first);
@@ -53,7 +54,7 @@ export async function handler(req) {
     let last = tags[0];
     parts[0] = `/${parts[0].replace("latest", last)}`;
     return redirect(parts);
-  }
+  }*/
 
   let isHTML =
     (req.headers.accept && req.headers.accept.startsWith("text/html")) ||
