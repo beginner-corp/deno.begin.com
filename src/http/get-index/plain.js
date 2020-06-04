@@ -21,7 +21,7 @@ export async function plain(path) {
           json.content ? "text/plain" : "application/json"
         }; charset=utf8`,
       },
-      body: json.content ? atob(json.content) : json,
+      body: json.content ? atob(json.content) : JSON.stringify(json),
     };
     /*
     } else {
