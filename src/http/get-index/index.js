@@ -10,9 +10,9 @@ import { getTags } from "./get_tags.js";
 export async function handler(req) {
   //
   // render home page
-  if (req.path === "/") {
+  //if (req.path === "/") {
     return home();
-  }
+ // }
 
   // not home! maybe redirect; maybe render html
   let parts = req.path.split("/").filter(Boolean); // ['modulename@v1.0.8', 'mod.ts']
