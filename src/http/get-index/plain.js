@@ -10,32 +10,25 @@ export async function plain(path) {
       `${base}/${repo}/contents/${bits.join("/")}?ref=${version}`,
     );
     let json = await files.json();
-    //if (json.content) return atob(json.content);
-    //else return json
     return {
       statusCode: 200,
       headers: {
         "cache-control":
           "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0",
         "content-type": `${
-          json.content ? "text/plain" : "application/json"
+          json.content ? "text/plain" : "text/html"
         }; charset=utf8`,
       },
-      body: json.content ? atob(json.content) : JSON.stringify(json),
+      body: json.content ? atob(json.content) : render(json),
     };
-    /*
-    } else {
-      //console.log('branch called with path', path, json)
-      let files = json.map((f) => ({
-        name: f.name,
-        path: f.path,
-        type: f.type,
-        raw: f.download_url,
-      }));
-      let link = (f) => `<li><a href=${path}/${f.path}>${f.path}</a></li>`;
-      let html = files.map(link).join("\n");
-      return html;
-    }*/
+  }
+
+  function render(json) {
+    let html = `<ul><li><a href=/>home</a></li>`;
+    html +=
+      json.map((v) =>
+        `<li><a href=${path.split("@")[0]}@${v.path}>${v.path}</a></li>`
+      ).join("") + "</ul>";
   }
 
   if (!ledger[path]) {
