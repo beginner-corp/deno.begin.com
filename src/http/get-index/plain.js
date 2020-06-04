@@ -28,8 +28,8 @@ export async function plain(path) {
     html +=
       json.map((v) =>
         `<li><a href=${path.split("@")}/${v.path}>${v.path}</a></li>`
-      );
-    return html.join("") + "</ul>"
+      ).join("");
+    return html + "</ul>"
   }
 
   if (!ledger[path]) {
